@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 #{title}
+  div.container
+    form(method='POST', action=(category ? category.url + '/edit' : '/category/create'))
+      .form-group
+        label(for='name') Name:
+        input#name.form-control(type='text', name='name', required=true, value=(category ? category.name : ''))
+      .form-group
+        label(for='description') Description:
+        textarea#description.form-control(name='description', required=true)= (category ? category.description : '')
+      button.btn.btn-primary(type='submit') Submit

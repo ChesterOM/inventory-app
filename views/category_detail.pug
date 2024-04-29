@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= category.name
+  p #{category.description}
+  
+  // Items in this category
+  h2 Items in this Category
+  if items.length
+    ul.list-group
+      each item in items
+        li.list-group-item
+          a(href=`/catalog/item/${item._id}`) #{item.name}
+          span.badge.badge-info.float-right Price: $#{item.price}
+  else
+    p No items found in this category.
+  
+  // Links to edit or delete the category
+  div
+    a.btn.btn-warning(href=`/catalog/category/${category._id}/edit`) Edit
+    form(method='POST', action=`/catalog/category/${category._id}/delete`, style='display: inline;')
+      button.btn.btn-danger(type='submit') Delete
+

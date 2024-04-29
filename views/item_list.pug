@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Item List
+  div.container
+    ul.list-group
+      each item in item_list
+        li.list-group-item
+          a(href=item.url) #{item.name}
+          p Price: #{item.price}
+          p In Stock: #{item.inStock}
+    a.btn.btn-primary(href='/item/create') Create New Item

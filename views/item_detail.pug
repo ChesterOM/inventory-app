@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= item.name
+  p #{item.description}
+  p Price: #{item.price}
+  p In Stock: #{item.inStock}
+  div
+    a.btn.btn-warning(href=item.url + '/edit') Edit
+    form(method='POST', action=item.url + '/delete')
+      button.btn.btn-danger(type='submit') Delete

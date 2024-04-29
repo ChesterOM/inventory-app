@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1 #{title}
+  div.container
+    form(method='POST', action=(item ? item.url + '/edit' : '/item/create'))
+      .form-group
+        label(for='name') Name:
+        input#name.form-control(type='text', name='name', required=true, value=(item ? item.name : ''))
+      .form-group
+        label(for='description') Description:
+        textarea#description.form-control(name='description', required=true)= (item ? item.description : '')
+      .form-group
+        label(for='price') Price:
+        input#price.form-control(type='number', name='price', required=true, value=(item ? item.price : ''))
+      .form-group
+        label(for='inStock') Number in Stock:
+        input#inStock.form-control(type='number', name='inStock', required=true, value=(item ? item.inStock : ''))
+      button.btn.btn-primary(type='submit') Submit
